@@ -29,7 +29,55 @@ export default function HomePage() {
             </TopBar >
             <Container>
                 <SideBarHome ocult={ocult}/>
-                <Products />
+                <Products ocult={ocult}>
+                    <ul>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                        <li>
+                            <div></div>
+                            <h1>Botão personalizado do Neymar</h1>
+                            <p>R$ 20,00</p>
+                        </li>
+                    </ul>
+                </Products>
             </Container>
         </>
     )
@@ -60,11 +108,11 @@ padding: 0 25px;
 h1{
     font-family: 'Roboto';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 900;
     font-size: 40px;
     line-height: 47px;
     color: #F8F0F0;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    text-shadow: 2px 6px 6px rgba(0, 0, 0, 0.9);
 }
 div{
     width:100px;
@@ -73,5 +121,53 @@ div{
 }
 `
 const Products = styled.div`
-
+display:flex;
+flex-wrap: wrap;
+align-items: flex-start;
+justify-content: flex-start;
+ul{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    padding-left:${(props)=> props.ocult? "20px":"190px"};
+}
+li{
+    width: 170px;
+    height: 230px;
+    box-sizing:border-box;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 50px 70px 20px 50px ;
+    background: #EDE6C1;
+    border: 4px solid #D1B316;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 33px;
+}
+div{
+    background-color: red;
+    height: 100px;
+    width: 100px;
+    border-radius:50px;
+}
+h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    margin-left: 15px;
+}
+p{
+    color: #00ff09;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+    margin-left: 15px;
+}
 `
