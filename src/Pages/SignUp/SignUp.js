@@ -23,81 +23,84 @@ export default function SignUp() {
         delete form.confirmPassword
 
         console.log(body)
-    
-        
+
+
         if (form.senha !== form.confirmPassword) setSenhaIncorreta(true)
 
         axios.post(`${process.env.REACT_APP_URI_URL}/cadastro`, body)
-            .then(res => {console.log(res); navigate("/")})
-            .catch((err) => {console.log(err.response.data); setDisableButton(false)})
+            .then(res => { console.log(res); navigate("/") })
+            .catch((err) => { console.log(err.response.data); setDisableButton(false) })
     }
 
     return (
 
-        <>        
-        <Alert senhaIncorreta={senhaIncorreta}>
-            Ocorreu um erro ao cadastrar. Senha e Confirme sua Senha Divergem
-            <Buttom onClick={() => setSenhaIncorreta(false)}> Ok </Buttom>
-        </Alert>
+        <>
+            <Alert senhaIncorreta={senhaIncorreta}>
+                Ocorreu um erro ao cadastrar. Senha e Confirme sua Senha Divergem
+                <Buttom onClick={() => setSenhaIncorreta(false)}> Ok </Buttom>
+            </Alert>
 
-        <form onSubmit={signup}>
+            <form onSubmit={signup}>
 
-            <SignUpContainer>
+                <SignUpContainer>
 
-                <DataContainer>
-                    <Titulo>
-                        DREAMSOCCER
-                    </Titulo>
-
-
-                    <Entradas>
-                        <Input placeholder="Nome"
-                            type="text"
-                            name={"name"}
-                            value={form.name}
-                            disabled={disableButton}
-                            onChange={handleForm}
-                            required />
-
-                        <Input placeholder="Email"
-                            type="email"
-                            name={"email"}
-                            value={form.email}
-                            disabled={disableButton}
-                            onChange={handleForm}
-                            required />
-
-                        <Input placeholder="Senha"
-                            type="password"
-                            name={"password"}
-                            value={form.password}
-                            disabled={disableButton}
-                            onChange={handleForm}
-                            required />
-
-                        <Input placeholder="Confirme sua Senha"
-                            type="password"
-                            name={"confirmPassword"}
-                            value={form.confirmPassword}
-                            disabled={disableButton}
-                            onChange={handleForm}
-                            senhaIncorreta={senhaIncorreta}
-                        />
-                    </Entradas>
-
-                    <Buttom type="submit">
-                        {disableButton ? <ThreeDots color="#08246C" height={80} width={80} timeout={3000} />
-                            : "Cadastrar"}
-                    </Buttom>
+                    <DataContainer>
+                        <Titulo>
+                            DREAMSOCCER
+                        </Titulo>
 
 
-                </DataContainer>
-            </SignUpContainer >
-        </form>
+                        <Entradas>
+                            <Input placeholder="Nome"
+                                type="text"
+                                name={"name"}
+                                value={form.name}
+                                disabled={disableButton}
+                                onChange={handleForm}
+                                required />
 
-        <Link to={""}>
+                            <Input placeholder="Email"
+                                type="email"
+                                name={"email"}
+                                value={form.email}
+                                disabled={disableButton}
+                                onChange={handleForm}
+                                required />
 
-        </Link>
+                            <Input placeholder="Senha"
+                                type="password"
+                                name={"password"}
+                                value={form.password}
+                                disabled={disableButton}
+                                onChange={handleForm}
+                                required />
+
+                            <Input placeholder="Confirme sua Senha"
+                                type="password"
+                                name={"confirmPassword"}
+                                value={form.confirmPassword}
+                                disabled={disableButton}
+                                onChange={handleForm}
+                                senhaIncorreta={senhaIncorreta}
+                            />
+                        </Entradas>
+
+                        <Buttom type="submit">
+                            {disableButton ? <ThreeDots color="#08246C" height={80} width={80} timeout={3000} />
+                                : "Cadastrar"}
+                        </Buttom>
+
+                        <Link to={"/login"}>
+                            Possui Cadastro? Faça Login
+                        </Link>
+
+                    </DataContainer>
+
+
+                </SignUpContainer >
+            </form>
+
+
         </>
 
 
