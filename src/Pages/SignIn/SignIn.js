@@ -1,7 +1,6 @@
 import { Alert, Buttom, DataContainer, Entradas, Input, SignUpContainer, Titulo } from "../SignUp/styled"
 import { ThreeDots } from "react-loader-spinner"
 import { useState } from "react"
-import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
 
