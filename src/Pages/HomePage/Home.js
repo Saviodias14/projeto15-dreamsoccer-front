@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { useEffect, useState, useNavigate } from "react";
+import { useEffect, useState} from "react";
 import SideBarHome from "./SideBarHome";
 import Header from "../../components/Header";
 import axios from "axios"
@@ -8,14 +8,14 @@ export default function HomePage() {
     const [ocult, setOcult] = useState(true)
     const [playersList, setPlayersList] = useState()
     const [param, setParam] = useState("")
-    const url = `${REACT_APP_API_URL}/players${param}`
+    const url = `${process.env.REACT_APP_API_URL}/players${param}`
     console.log(url)
 
     useEffect(() => {
         axios.get(url)
             .then(res => setPlayersList(res.data))
             .catch(err => console.log(err.response.data))
-    }, [param])
+    }, [])
     if (!playersList) {
         return (
             <>
