@@ -37,15 +37,18 @@ li{
     border-radius: 33px;
 }
 div{
-    background-color: red;
     height: 100px;
     width: 100px;
     border-radius:50px;
     margin: 0 auto;
-    overflow: hidden; 
-}
-img{
-    height:100px;    
+    border: 1px solid #D1B316;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        height:100px;
+        object-fit: cover;
+    }
 }
 h1{
     font-family: 'Roboto';

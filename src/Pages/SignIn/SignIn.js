@@ -1,13 +1,11 @@
 import { Alert, Buttom, DataContainer, Entradas, Input, SignUpContainer, Titulo } from "../SignUp/styled"
 import { ThreeDots } from "react-loader-spinner"
 import { useContext, useState } from "react"
-import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 import UserData from "../../context/UserData"
-
+import api from "../../services/api"
 
 export default function SignIn() {
-
 
     const [disableButton, setDisableButton] = useState(false)
     const [form, setForm] = useState({ email: "", password: "" })
@@ -29,20 +27,23 @@ export default function SignIn() {
         const body = { ...form }
         setDisableButton(true)
 
-        console.log(body)
-
-        axios.post(`${process.env.REACT_APP_API_URL}login`, body)
-            .then(res => { console.log(res); 
-                            setToken(res.data.token)
-                            setName(res.data.userName)
-                            localStorage.setItem("token", res.data.token)
-                            localStorage.setItem("userName", res.data.userName)
-                            navigate("/") })
-            .catch((err) => { console.log(err.response.data); setDisableButton(false); setSenhaIncorreta(true) })
+        const promise = api.login(body);
+        promise.then( res => {
+            console.log(res); 
+            setToken(res.data.token);
+            setName(res.data.userName);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("userName", res.data.userName);
+            navigate("/"); 
+        })
+        promise.catch( (err) => {
+            console.log(err.response.data); 
+            setDisableButton(false); 
+            setSenhaIncorreta(true)
+        })
     }
 
     return (
-
         <>
             <Alert senhaIncorreta={senhaIncorreta}>
                 Ocorreu um erro ao cadastrar. Senha e Confirme sua Senha Divergem
@@ -55,27 +56,30 @@ export default function SignIn() {
 
                     <DataContainer>
                         <Titulo>
-                        BEM VINDO AO DREAMSOCCER
+                            BEM VINDO AO DREAMSOCCER
                         </Titulo>
-
 
                         <Entradas>
 
-                            <Input placeholder="Email"
+                            <Input 
+                                placeholder="Email"
                                 type="email"
                                 name={"email"}
                                 value={form.email}
                                 disabled={disableButton}
                                 onChange={handleForm}
-                                required />
+                                required 
+                            />
 
-                            <Input placeholder="Senha"
+                            <Input 
+                                placeholder="Senha"
                                 type="password"
                                 name={"password"}
                                 value={form.password}
                                 disabled={disableButton}
                                 onChange={handleForm}
-                                required />
+                                required 
+                            />
 
                         </Entradas>
 
@@ -85,18 +89,12 @@ export default function SignIn() {
                         </Buttom>
 
                         <Link to={"/cadastro"}>
-                        Não possui Login? Cadastre-se
+                            Não possui Login? Cadastre-se
                         </Link>
 
                     </DataContainer>
-
-
                 </SignUpContainer >
             </form>
-
-
         </>
-
-
     )
 }
