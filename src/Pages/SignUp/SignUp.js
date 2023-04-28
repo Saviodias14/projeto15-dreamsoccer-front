@@ -1,10 +1,8 @@
 import { Alert, Buttom, DataContainer, Entradas, Input, SignUpContainer, Titulo } from "./styled"
 import { ThreeDots } from "react-loader-spinner"
 import { useState } from "react"
-import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
-
-
+import api from "../../services/api"
 
 export default function SignUp() {
 
@@ -17,7 +15,6 @@ export default function SignUp() {
     /* useEffect(() => {
         if (!token || !name) return navigate("/")
     }, [token, name, navigate]) */
-
     
     function handleForm(event) {
         setForm({ ...form, [event.target.name]: event.target.value })
@@ -27,26 +24,25 @@ export default function SignUp() {
         event.preventDefault()
         setDisableButton(true)
 
-        console.log(form.password)
-        console.log(form.confirmPassword)
-
         if (form.password !== form.confirmPassword) {
             setSenhaIncorreta(true) 
             setDisableButton(false)
-            return
+            return;
         }
 
         delete form.confirmPassword
         const body = { ...form }
-        console.log(body)
 
-        axios.post(`${process.env.REACT_APP_API_URL}cadastro`, body)
-            .then(res => { console.log(res); navigate("/login") })
-            .catch((err) => { console.log(err.response.data); setDisableButton(false) })
+        const promise = api.signUp(body);
+        promise.then( res =>{
+            navigate("/login");
+        })
+        promise.catch((err) =>{
+            setDisableButton(false)
+        });
     }
 
     return (
-
         <>
             <Alert senhaIncorreta={senhaIncorreta}>
                 Ocorreu um erro ao cadastrar. Senha e Confirme sua Senha Divergem
@@ -62,33 +58,39 @@ export default function SignUp() {
                             DREAMSOCCER
                         </Titulo>
 
-
                         <Entradas>
-                            <Input placeholder="Nome"
+                            <Input 
+                                placeholder="Nome"
                                 type="text"
                                 name={"name"}
                                 value={form.name}
                                 disabled={disableButton}
                                 onChange={handleForm}
-                                required />
+                                required 
+                            />
 
-                            <Input placeholder="Email"
+                            <Input 
+                                placeholder="Email"
                                 type="email"
                                 name={"email"}
                                 value={form.email}
                                 disabled={disableButton}
                                 onChange={handleForm}
-                                required />
+                                required 
+                            />
 
-                            <Input placeholder="Senha"
+                            <Input 
+                                placeholder="Senha"
                                 type="password"
                                 name={"password"}
                                 value={form.password}
                                 disabled={disableButton}
                                 onChange={handleForm}
-                                required />
+                                required 
+                            />
 
-                            <Input placeholder="Confirme sua Senha"
+                            <Input 
+                                placeholder="Confirme sua Senha"
                                 type="password"
                                 name={"confirmPassword"}
                                 value={form.confirmPassword}
@@ -108,14 +110,8 @@ export default function SignUp() {
                         </Link>
 
                     </DataContainer>
-
-
                 </SignUpContainer >
             </form>
-
-
         </>
-
-
     )
 }

@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-globals */
 import { FaRegArrowAltCircleRight, FaCheckSquare, FaRegArrowAltCircleDown } from "react-icons/fa";
 import { FilterList, FiltersQuery } from "../../constants/FilterList";
 import { Buttom } from "../SignUp/styled";
@@ -13,8 +12,6 @@ export default function SideBarHome({ ocult, setParam }) {
     FilterList.forEach((l) => newFilter.push([...l.values]))
     const [selectedFilter, setSelectedFilter] = useState([...newFilter])
     const { name } = useContext(UserData)
-    console.log(selectedFilter)
-    console.log(FiltersQuery)
 
     function FilterSearch() {
         let word = "?"
@@ -24,7 +21,6 @@ export default function SideBarHome({ ocult, setParam }) {
         selectedFilter[3].filter((v, i) => v ? "" : word += `category=${FiltersQuery[3][i]}&`)
         setParam(word.slice(0, -1))
     }
-
 
     return (
         <SideBar ocult={ocult}>
@@ -73,56 +69,56 @@ export default function SideBarHome({ ocult, setParam }) {
 }
 
 const SideBar = styled.div`
-display: ${(props) => (props.ocult ? "none" : "flex")};
-width:170px;
-min-height: 100%;
-flex-direction:column;
-align-items:flex-start;
-justify-content: flex-start;
-padding-left:20px;
-background: #08246C;
-border-right: 2px solid #040B30;
-box-sizing:border-box;
-position: absolute;
-left:0;
-top:0;
-color:white;
-h1{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 16px;
-    display: flex;
-    margin-top:20px;
-    margin-bottom:40px;
-    margin-left: 20px;
-    text-align: center;
-}
-li{
-    display: flex;
+    display: ${(props) => (props.ocult ? "none" : "flex")};
+    width:170px;
+    min-height: 100%;
     flex-direction:column;
-    margin-bottom: 20px;
-}
+    align-items:flex-start;
+    justify-content: flex-start;
+    padding-left:20px;
+    background: #08246C;
+    border-right: 2px solid #040B30;
+    box-sizing:border-box;
+    position: absolute;
+    left:0;
+    top:0;
+    color:white;
+    h1{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 16px;
+        display: flex;
+        margin-top:20px;
+        margin-bottom:40px;
+        margin-left: 20px;
+        text-align: center;
+    }
+    li{
+        display: flex;
+        flex-direction:column;
+        margin-bottom: 20px;
+    }
 
-a{
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-    display: flex;
-    margin-top:20px;
-    margin-bottom:40px;
-}
-li{
-    display: flex;
-    flex-direction:column;
-    margin-bottom: 20px;
-}
-div{
-    display: flex;
-}
+    a{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 26px;
+        display: flex;
+        margin-top:20px;
+        margin-bottom:40px;
+    }
+    li{
+        display: flex;
+        flex-direction:column;
+        margin-bottom: 20px;
+    }
+    div{
+        display: flex;
+    }
 `
 
 

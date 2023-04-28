@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
 import background from "../../assets/background.jpg"
-import ruido from "../../assets/ruido.png"
 
 export default function DescriptionPage(){
     const {id} = useParams();
