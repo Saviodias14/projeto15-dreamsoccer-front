@@ -1,16 +1,20 @@
 import { FaRegArrowAltCircleRight, FaCheckSquare, FaRegArrowAltCircleDown } from "react-icons/fa";
 import FilterList from "../../constants/FilterList";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components";
+import UserData from "../../context/UserData";
+import { Link } from "react-router-dom";
 
 export default function SideBarHome({ocult}) {
     const [filter, setFilter] = useState([...FilterList])
     let newFilter =[]
     FilterList.forEach((l)=>newFilter.push([...l.values]))
     const [selectedFilter, setSelectedFilter] = useState([...newFilter])
+
+    const {name} = useContext(UserData)
     return (
         <SideBar ocult={ocult}>
-            <h1>Olá, fulano!</h1>
+            <h1>{name  ? <Text> Olá, {name} </Text> : <Link to={"/login"}> Comprar? <br/> Faça Login!</Link>} </h1>
             <ul>{FilterList.map((l, i) =>
                 <Filter show={filter[i]}>
                     <div>{filter[i] ?
@@ -48,36 +52,64 @@ export default function SideBarHome({ocult}) {
 }
 
 const SideBar = styled.div`
-    display: ${(props) => (props.ocult ? "none" : "flex")};
-    width:170px;
-    min-height: 100%;
+display: ${(props) => (props.ocult ? "none" : "flex")};
+width:170px;
+min-height: 100%;
+flex-direction:column;
+align-items:flex-start;
+justify-content: flex-start;
+padding-left:20px;
+background: #08246C;
+border-right: 2px solid #040B30;
+box-sizing:border-box;
+position: absolute;
+left:0;
+top:0;
+color:white;
+h1{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 16px;
+    display: flex;
+    margin-top:20px;
+    margin-bottom:40px;
+    margin-left: 20px;
+    text-align: center;
+}
+li{
+    display: flex;
     flex-direction:column;
-    align-items:flex-start;
-    justify-content: flex-start;
-    padding-left:20px;
-    background: #08246C;
-    border-right: 2px solid #040B30;
-    box-sizing:border-box;
-    position: absolute;
-    left:0;
-    top:0;
-    color:white;
-    h1{
+    margin-bottom: 20px;
+}
+
+a{
         font-family: 'Roboto';
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 16px;
-        display: flex;
-        margin-top:20px;
-        margin-bottom:40px;
+        line-height: 47px;
+        color: #F8F0F0;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+        
+        
+        
     }
-    li{
-        display: flex;
-        flex-direction:column;
-        margin-bottom: 20px;
-    }
-    `
+
+`
+
+
+const Text = styled.div`
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 47px;
+    color: #F8F0F0;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+`
+
     const Filter = styled.li`
     display: flex;
     flex-direction:column;

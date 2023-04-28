@@ -7,6 +7,22 @@ export const SignUpContainer = styled.div`
     display: flex;
 
     position: relative;
+
+    a{font-family: 'Righteous';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 25px;
+        /* identical to box height */
+
+        display: flex;
+        align-items: center;
+        text-align: center;
+        text-decoration-line: underline;
+
+        color: #28B0EA;
+
+    }
 `
 
 export const DataContainer = styled.div`
@@ -97,6 +113,9 @@ export const Buttom = styled.button`
     align-items: center;
    
     color: #000000;
+
+    margin-bottom:15px;
+    
 `
 export const Alert = styled.div`
 
@@ -113,8 +132,8 @@ export const Alert = styled.div`
 
     position: absolute;
 
-    top:40%;
-    left:25%; 
+    top:35vh;
+    left:35vw; 
 
     font-family: 'Righteous';
     font-style: normal;
