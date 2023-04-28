@@ -1,35 +1,44 @@
 import { Alert, Buttom, DataContainer, Entradas, Input, SignUpContainer, Titulo } from "../SignUp/styled"
 import { ThreeDots } from "react-loader-spinner"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
+import UserData from "../../context/UserData"
 
 
 export default function SignIn() {
 
+
     const [disableButton, setDisableButton] = useState(false)
-    const [form, setForm] = useState({ name: "", email: "", password: "", confirmPassword: "" })
+    const [form, setForm] = useState({ email: "", password: "" })
     const [senhaIncorreta, setSenhaIncorreta] = useState(false)
     const navigate = useNavigate()
 
+    const {setToken, setName} = useContext(UserData)
+
+    /* useEffect(() => {
+        if (!token || !name) return navigate("/")
+    }, [token, name, navigate])
+ */
     function handleForm(event) {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    function signup(event) {
+    function signin(event) {
         event.preventDefault()
         const body = { ...form }
         setDisableButton(true)
-        delete form.confirmPassword
 
         console.log(body)
 
-
-        if (form.senha !== form.confirmPassword) setSenhaIncorreta(true)
-
-        /* axios.post(`${process.env.REACT_APP_URI_URL}/cadastro`, body)
-            .then(res => { console.log(res); navigate("/") })
-            .catch((err) => { console.log(err.response.data); setDisableButton(false) }) */
+        axios.post(`${process.env.REACT_APP_URI_URL}/login`, body)
+            .then(res => { console.log(res); 
+                            setToken(res.data.token)
+                            setName(res.data.userName)
+                            localStorage.setItem("token", res.data.token)
+                            localStorage.setItem("userName", res.data.userName)
+                            navigate("/") })
+            .catch((err) => { console.log(err.response.data); setDisableButton(false); setSenhaIncorreta(true) })
     }
 
     return (
@@ -40,7 +49,7 @@ export default function SignIn() {
                 <Buttom onClick={() => setSenhaIncorreta(false)}> Ok </Buttom>
             </Alert>
 
-            <form onSubmit={signup}>
+            <form onSubmit={signin}>
 
                 <SignUpContainer>
 
