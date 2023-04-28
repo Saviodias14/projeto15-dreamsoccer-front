@@ -5,7 +5,7 @@ export const FilterList = [
     {filter:"Gênero", values:["Masculino", "Feminino"]}
 ]
 export const FiltersQuery = [
-    ["BRA", "outro"],
+    ["BRA", "Internacional"],
     ["G", "D", "M", "ATA"],
     ["Legendary", "Silver", "Bronze"],
     ["M", "F"]

@@ -9,7 +9,7 @@ export default function HomePage() {
     const [ocult, setOcult] = useState(true)
     const [playersList, setPlayersList] = useState()
     const [param, setParam] = useState("")
-    const url = `${process.env.REACT_APP_API_URL}players${param}`
+    const url = `${process.env.REACT_APP_API_URL}/players${param}`
     console.log(url)
 
     useEffect(() => {

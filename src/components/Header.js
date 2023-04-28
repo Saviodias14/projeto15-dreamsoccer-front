@@ -5,11 +5,13 @@ import { useState } from "react";
 import { useContext } from "react";
 import UserData from "../context/UserData";
 import {Logout} from "../services/logout";
+import {useParams} from ""
 
 export default function Header({ ocult, setOcult }) {
     const navigate = useNavigate()
     const [cliqueUser, setCliqueUser] = useState(false)
     const {name} = useContext(UserData) 
+    const route = useParams()
     const exit = Logout()
    
     return (
