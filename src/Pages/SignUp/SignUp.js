@@ -40,7 +40,7 @@ export default function SignUp() {
         const body = { ...form }
         console.log(body)
 
-        axios.post(`${process.env.REACT_APP_API_URL}/cadastro`, body)
+        axios.post(`${process.env.REACT_APP_API_URL}cadastro`, body)
             .then(res => { console.log(res); navigate("/login") })
             .catch((err) => { console.log(err.response.data); setDisableButton(false) })
     }

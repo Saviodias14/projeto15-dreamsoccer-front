@@ -31,7 +31,7 @@ export default function SignIn() {
 
         console.log(body)
 
-        axios.post(`${process.env.REACT_APP_API_URL}/login`, body)
+        axios.post(`${process.env.REACT_APP_API_URL}login`, body)
             .then(res => { console.log(res); 
                             setToken(res.data.token)
                             setName(res.data.userName)
