@@ -5,7 +5,6 @@ import styled from "styled-components";
 import UserData from "../../context/UserData";
 import { Link } from "react-router-dom";
 
-
 export default function SideBarHome({ocult}) {
     const [filter, setFilter] = useState([...FilterList])
     let newFilter =[]
@@ -47,7 +46,6 @@ export default function SideBarHome({ocult}) {
                     </ul>
                 </Filter>
             )}
-
             </ul>
         </SideBar>
     )
@@ -137,4 +135,61 @@ const Text = styled.div`
     line-height: 47px;
     color: #F8F0F0;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+    display: ${(props) => (props.ocult ? "none" : "flex")};
+    width:170px;
+    min-height: 100%;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content: flex-start;
+    padding-left:20px;
+    background: #08246C;
+    border-right: 2px solid #040B30;
+    box-sizing:border-box;
+    position: absolute;
+    left:0;
+    top:0;
+    color:white;
+    h1{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 16px;
+        display: flex;
+        margin-top:20px;
+        margin-bottom:40px;
+    }
+    li{
+        display: flex;
+        flex-direction:column;
+        margin-bottom: 20px;
+    }
+    `
+    const Filter = styled.li`
+    display: flex;
+    flex-direction:column;
+    margin-bottom: 20px;
+    ul{
+        display:${(props) => props.show ? 'none' : 'flex'};
+        flex-direction:column;
+    }
+    div{
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 10px;
+    }
+    h2{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    p{
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 18px;
+    }
 `
