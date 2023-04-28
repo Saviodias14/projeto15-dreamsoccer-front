@@ -3,7 +3,6 @@ import SideBarHome from "./SideBarHome";
 import Header from "../../components/Header";
 import api from "../../services/api";
 import {Link} from "react-router-dom"
-import axios from "axios"
 import { Container, Products } from "./styles";
 
 export default function HomePage() {
