@@ -115,6 +115,7 @@ export const Buttom = styled.button`
     color: #000000;
 
     margin-bottom:15px;
+    
 `
 export const Alert = styled.div`
 
@@ -131,8 +132,8 @@ export const Alert = styled.div`
 
     position: absolute;
 
-    top:40%;
-    left:25%; 
+    top:35vh;
+    left:35vw; 
 
     font-family: 'Righteous';
     font-style: normal;
