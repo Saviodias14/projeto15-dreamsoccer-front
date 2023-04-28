@@ -21,13 +21,14 @@ export default function HomePage() {
             <>
                 <Header ocult={ocult} setOcult={setOcult} />
                 <Container>
-                    <SideBarHome ocult={ocult} setParam={setParam} />
+                    <SideBarHome ocult={ocult} setParam={setParam} param={param} />
                     <Products ocult={ocult}>
                     </Products>
                 </Container>
             </>
         )
     }
+    
     return (
         <>
             <Header ocult={ocult} setOcult={setOcult} />

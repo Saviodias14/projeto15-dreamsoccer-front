@@ -5,6 +5,7 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
 
+
 export default function SignUp() {
 
     const [disableButton, setDisableButton] = useState(false)
@@ -12,23 +13,35 @@ export default function SignUp() {
     const [senhaIncorreta, setSenhaIncorreta] = useState(false)
     const navigate = useNavigate()
 
+    /* const {token, name} = useContext(UserData) */
+    /* useEffect(() => {
+        if (!token || !name) return navigate("/")
+    }, [token, name, navigate]) */
+
+    
     function handleForm(event) {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
     function signup(event) {
         event.preventDefault()
-        const body = { ...form }
         setDisableButton(true)
-        delete form.confirmPassword
 
+        console.log(form.password)
+        console.log(form.confirmPassword)
+
+        if (form.password !== form.confirmPassword) {
+            setSenhaIncorreta(true) 
+            setDisableButton(false)
+            return
+        }
+
+        delete form.confirmPassword
+        const body = { ...form }
         console.log(body)
 
-
-        if (form.senha !== form.confirmPassword) setSenhaIncorreta(true)
-
         axios.post(`${process.env.REACT_APP_URI_URL}/cadastro`, body)
-            .then(res => { console.log(res); navigate("/") })
+            .then(res => { console.log(res); navigate("/login") })
             .catch((err) => { console.log(err.response.data); setDisableButton(false) })
     }
 

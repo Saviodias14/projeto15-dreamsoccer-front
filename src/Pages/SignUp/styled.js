@@ -116,9 +116,9 @@ export const Buttom = styled.button`
 
     margin-bottom:15px;
     transition: transform 0.1s ease-in-out;
-    &:active {
+&:active {
   transform: translateY(2px);
-  }
+}
 `
 export const Alert = styled.div`
 
@@ -135,8 +135,8 @@ export const Alert = styled.div`
 
     position: absolute;
 
-    top:40%;
-    left:25%; 
+    top:35vh;
+    left:35vw; 
 
     font-family: 'Righteous';
     font-style: normal;
