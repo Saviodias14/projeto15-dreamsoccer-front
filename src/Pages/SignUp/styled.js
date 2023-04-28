@@ -115,6 +115,10 @@ export const Buttom = styled.button`
     color: #000000;
 
     margin-bottom:15px;
+    transition: transform 0.1s ease-in-out;
+    &:active {
+  transform: translateY(2px);
+  }
 `
 export const Alert = styled.div`
 

@@ -1,62 +1,47 @@
 import styled from "styled-components"
-import { useState } from "react";
+import { useEffect, useState, useNavigate } from "react";
 import SideBarHome from "./SideBarHome";
 import Header from "../../components/Header";
+import axios from "axios"
 
 export default function HomePage() {
     const [ocult, setOcult] = useState(true)
+    const [playersList, setPlayersList] = useState()
+    const [param, setParam] = useState("")
+    const url = `https://dreamsoccer-api.onrender.com/players${param}`
+    console.log(url)
+
+    useEffect(() => {
+        axios.get(url)
+            .then(res => setPlayersList(res.data))
+            .catch(err => console.log(err.response.data))
+    }, [param])
+    if (!playersList) {
+        return (
+            <>
+                <Header ocult={ocult} setOcult={setOcult} />
+                <Container>
+                    <SideBarHome ocult={ocult} setParam={setParam} />
+                    <Products ocult={ocult}>
+                    </Products>
+                </Container>
+            </>
+        )
+    }
     return (
         <>
-            <Header ocult={ocult} setOcult={setOcult}/>
+            <Header ocult={ocult} setOcult={setOcult} />
             <Container>
-                <SideBarHome ocult={ocult}/>
+                <SideBarHome ocult={ocult} setParam={setParam} param={param} />
                 <Products ocult={ocult}>
                     <ul>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
-                        <li>
-                            <div></div>
-                            <h1>Botão personalizado do Neymar</h1>
-                            <p>R$ 20,00</p>
-                        </li>
+                        {playersList.map((p) =>
+                            <li >
+                                <div><img src={p.img} /></div>
+                                <h1>Botão personalizado do {p.name}</h1>
+                                <p>R$ {p.price},00</p>
+                            </li>
+                        )}
                     </ul>
                 </Products>
             </Container>
@@ -83,10 +68,9 @@ justify-content: flex-start;
 ul{
     display:flex;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
-    
-    padding-left:${(props)=> props.ocult? "20px":"190px"};
+    align-items: center;
+    justify-content: center;
+    padding-left:${(props) => props.ocult ? "20px" : "190px"};
 }
 li{
     width: 170px;
@@ -94,7 +78,7 @@ li{
     box-sizing:border-box;
     display: flex;
     flex-direction:column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
     margin: 50px 70px 20px 50px ;
     background: #EDE6C1;
@@ -107,12 +91,17 @@ div{
     height: 100px;
     width: 100px;
     border-radius:50px;
+    margin: 0 auto;
+    overflow: hidden; 
+}
+img{
+    height:100px;    
 }
 h1{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 18px;
     margin-left: 15px;
 }
@@ -121,7 +110,7 @@ p{
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 18px;
     line-height: 18px;
     margin-left: 15px;
 }

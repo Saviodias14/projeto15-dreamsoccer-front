@@ -1,13 +1,26 @@
+/* eslint-disable no-restricted-globals */
 import { FaRegArrowAltCircleRight, FaCheckSquare, FaRegArrowAltCircleDown } from "react-icons/fa";
-import FilterList from "../../constants/FilterList";
+import {FilterList, FiltersQuery} from "../../constants/FilterList";
 import { useState } from "react";
 import styled from "styled-components";
+import { Buttom } from "../SignUp/styled";
 
-export default function SideBarHome({ocult}) {
+export default function SideBarHome({ocult, setParam}) {
     const [filter, setFilter] = useState([...FilterList])
     let newFilter =[]
     FilterList.forEach((l)=>newFilter.push([...l.values]))
     const [selectedFilter, setSelectedFilter] = useState([...newFilter])
+    console.log(selectedFilter)
+    console.log(FiltersQuery)
+
+    function FilterSearch(){
+        let word = "?"
+        selectedFilter[0].filter((v,i)=>v?"":word+=`nacionality=${FiltersQuery[0][i]}&`)
+        selectedFilter[1].filter((v,i)=>v?"":word+=`position=${FiltersQuery[1][i]}&`)
+        selectedFilter[2].filter((v,i)=>v?"":word+=`type=${FiltersQuery[2][i]}&`)
+        selectedFilter[3].filter((v,i)=>v?"":word+=`category=${FiltersQuery[3][i]}&`)
+        setParam(word.slice(0, -1))
+    }
     return (
         <SideBar ocult={ocult}>
             <h1>Olá, fulano!</h1>
@@ -43,6 +56,13 @@ export default function SideBarHome({ocult}) {
                 </Filter>
             )}
             </ul>
+            <div>
+                <Buttom onClick={()=>{
+                    setParam("")
+                    setSelectedFilter([...newFilter])
+                    }} style={{width: '70px'}}>Limpar</Buttom>
+                <Buttom onClick={FilterSearch} style={{width: '70px'}}>Buscar</Buttom>
+            </div>
         </SideBar>
     )
 }
@@ -67,7 +87,7 @@ const SideBar = styled.div`
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 16px;
+        line-height: 26px;
         display: flex;
         margin-top:20px;
         margin-bottom:40px;
@@ -76,6 +96,9 @@ const SideBar = styled.div`
         display: flex;
         flex-direction:column;
         margin-bottom: 20px;
+    }
+    div{
+        display: flex;
     }
     `
     const Filter = styled.li`
