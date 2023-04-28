@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import SideBarHome from "./SideBarHome";
 import Header from "../../components/Header";
 import api from "../../services/api";
-import {Link} from "react-router-dom"
 import { Container, Products } from "./styles";
+import Player from "../../components/Player";
 
 export default function HomePage() {
     const [ocult, setOcult] = useState(true)
@@ -12,7 +12,7 @@ export default function HomePage() {
 
     useEffect(() => {
         const promise = api.getPlayers(param);
-        promise.then(res => setPlayersList(res.data))
+        promise.then(res => { console.log(res.data); setPlayersList(res.data) })
         promise.catch(err => console.log(err.response.data));
     }, [param])
 
@@ -36,14 +36,14 @@ export default function HomePage() {
                 <SideBarHome ocult={ocult} setParam={setParam} param={param} />
                 <Products ocult={ocult}>
                     <ul>
-                        {playersList.map((p) =>
-                            <Link to={`/descricao/${p._id}`}>
-                                <li key={p._id}>
-                                    <div><img src={p.img} alt={p.name}/></div>
-                                    <h1>Botão personalizado do {p.name}</h1>
-                                    <p>R$ {p.price},00</p>
-                                </li>
-                            </Link>
+                        {playersList.map((p) => <li>
+                            <Player key={p._id}
+                                    _id={p._id}
+                                    imagem={p.img}
+                                    name={p.name}
+                                    price={p.price}
+                                    type={p.type}/>
+                        </li>
                         )}
                     </ul>
                 </Products>

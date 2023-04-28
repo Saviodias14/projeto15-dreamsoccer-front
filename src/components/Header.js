@@ -91,7 +91,7 @@ const Usuario = styled.div`
     box-sizing:border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-    display: flex;
+    display: ${props => props.cliqueUser ? "flex" : "none"} ;
     justify-content: center;
     align-items: center;
 
@@ -109,7 +109,7 @@ const Usuario = styled.div`
 `
 const slideIn = keyframes`
     0% {
-        top: 20px;
+        top: 50px;
     }
     100% {
         top: 70px;
@@ -122,7 +122,7 @@ const slideOut = keyframes`
         top: 70px;
     }
     100% {
-        top: -100%;
+        top: 60px;
     }
 `;
 

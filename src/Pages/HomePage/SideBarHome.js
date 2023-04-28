@@ -24,7 +24,7 @@ export default function SideBarHome({ ocult, setParam }) {
 
     return (
         <SideBar ocult={ocult}>
-            <h1>{name ? <Text> Olá, {name} </Text> : <Link to={"/login"}> Comprar? <br /> Faça Login!</Link>} </h1>
+            <h1>{name ? <Text> Olá, {name} </Text> : <Link to={"/login"}> <Text> Comprar? <br /> Faça Login! </Text></Link>} </h1>
             <ul>{FilterList.map((l, i) =>
                 <Filter show={filter[i]}>
                     <div>{filter[i] ?
