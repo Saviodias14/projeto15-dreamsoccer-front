@@ -8,7 +8,7 @@ export default function HomePage() {
     const [ocult, setOcult] = useState(true)
     const [playersList, setPlayersList] = useState()
     const [param, setParam] = useState("")
-    const url = `https://dreamsoccer-api.onrender.com/players${param}`
+    const url = `${REACT_APP_API_URL}/players${param}`
     console.log(url)
 
     useEffect(() => {
