@@ -7,7 +7,7 @@ function createConfig(token){
 }
 
 function getPlayerById(id){
-    const promise = axios.get(`${BASE_URL}/description/${id}`);
+    const promise = axios.get(`${BASE_URL}/players/${id}`);
     return promise;
 }
 
