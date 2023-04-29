@@ -43,6 +43,7 @@ export default function HomePage() {
                                     name={p.name}
                                     price={p.price}
                                     type={p.type}/>
+                                    
                         </li>
                         )}
                     </ul>
