@@ -1,12 +1,12 @@
 import styled , { keyframes }from "styled-components"
-import { FaBars, FaCartPlus, FaUser, FaSignOutAlt } from 'react-icons/fa';
+import { FaBars, FaCartPlus, FaUser, FaSignOutAlt, FaHome } from 'react-icons/fa';
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import UserData from "../context/UserData";
 import api from "../services/api";
 
-export default function Header({ ocult, setOcult }) {
+export default function Header({ ocult, setOcult, isDescriptionPage }) {
     const navigate = useNavigate()
     const [cliqueUser, setCliqueUser] = useState(false)
     const { token, setName, setToken, name } = useContext(UserData)
@@ -25,12 +25,18 @@ export default function Header({ ocult, setOcult }) {
     return (
         <>
             <TopBar>
+                {!isDescriptionPage ? 
                 <div>
                     <FaBars onClick={() => ocult ? setOcult(false) : setOcult(true)}
                         style={{ color: 'white', marginRight: '20px', cursor: 'pointer' }}
-                        size={25}
-                    />
+                        size={25} />
+                </div> : 
+                <div>
+                <FaHome onClick={() => navigate("/")}
+                    style={{ color: 'white', marginRight: '20px', cursor: 'pointer' }}
+                    size={25} />
                 </div>
+                }
                 <h1>DREAMSOCCER</h1>
                 <div>
                     <FaUser onClick={() => { cliqueUser === true ? setCliqueUser(false) : setCliqueUser(true)}}

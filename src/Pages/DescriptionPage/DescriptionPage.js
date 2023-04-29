@@ -1,136 +1,70 @@
-import styled from "styled-components";
 import Header from "../../components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import api from "../../services/api";
-import background from "../../assets/background.jpg"
+import colors from "../../constants/colors";
+import ColorPicker from "./ColorPicker";
+import { Div, Main, Piece } from "./style";
 
 export default function DescriptionPage(){
+    const [player, setPlayer] = useState("");
+    const [color, setColor] = useState("#b87333");
+    const [quant, setQuant] = useState(1);
     const {id} = useParams();
 
-    const promise = api.getPlayerById(id);
-    promise.then((response) => {
-        console.log(response);
-    });
-    promise.catch( (error) =>{
-        console.log(error)
-    });
+    useEffect(() => {
+        const promise = api.getPlayerById(id);
+        promise.then( response => { 
+            setPlayer(response.data);
+            setColor(colors[response.data.type]);
+        });
+        promise.catch( (error) => console.log(error.response.data) );
+    }, [])
 
     return(
         <>
-            <Header />
-            <Main>
+            <Header isDescriptionPage="true" />
+            <Main type={player.type}>
                 <div>
-                    <img src="https://cms.somosfanaticos.com/__export/1642604230910/sites/fanaticos/img/2022/01/19/imago-gavi-121121-2.jpg_1159711837.jpg" alt="test"/>
+                    <img src={player.img} alt={player.name}/>
                     <div>
                         <h2>Informações pessoais:</h2>
                         <ul>
-                            <li>Posição: M </li>
-                            <li>Idade: 18</li>
-                            <li>Data de Nasc.: 24/08/2005</li>
+                            <li>Posição: {player.position} </li>
+                            <li>Idade: {player.age}</li>
+                            <li>Data de Nasc.: {player.bday}</li>
+                            <li>Tipo: {player.type}</li>
                         </ul>
                     </div>
                 </div>
                 <Div>
-                    <h1>Gavi</h1>
-
-                    <Piece>
-                        <img src="https://cms.somosfanaticos.com/__export/1642604230910/sites/fanaticos/img/2022/01/19/imago-gavi-121121-2.jpg_1159711837.jpg" alt="test"/>
-                        <p>10</p>
+                    <h1>{player.name}</h1>
+                    <Piece color={color}>
+                        <img src={player.img} alt={player.name}/>
                     </Piece>
-                    <p>Tipo: Lendária</p>
-                    <h2>Valor: R$ 20.99 </h2>
+                    <div>
+                        <h2>
+                            Comprar
+                            <span>R${player.price},00</span>
+                        </h2>
+                        <label>Quantidade: </label>
+                        <select name="quantity" value={quant} onChange={(e) => setQuant(e.target.value)}>
+                            <option value="1">1 </option>
+                            <option value="2">2 </option>
+                            <option value="3">3 </option>
+                            <option value="4">4 </option>
+                            <option value="5">5 </option>
+                            <option value="6">6 </option>
+                            <option value="7">7 </option>
+                            <option value="8">8 </option>
+                            <option value="9">9 </option>
+                            <option value="10">10 </option>
+                        </select>
+                        <ColorPicker color={color} setColor={setColor}/>
+                    </div>
+                    <button>Adicionar ao carrinho</button>
                 </Div>
-            </Main>    
+            </Main>
         </>
     )
 }
-
-
-const Main = styled.main`
-    width: 100vw;
-    height: calc(100vh - 70px);
-    display: flex;
-    justify-content: space-between;
-    padding: 80px 12vw;
-    font-size: 14px;
-    background: url(${background});
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    div:first-child{
-        img{
-            width: 250px;
-            height: 400px;
-            object-fit: cover;
-            border: 8px solid #b87333;
-            border-radius: 20px;
-            box-shadow: 4px 4px 4px #888;
-        }
-        div{
-            width: 250px;
-            margin-top: 20px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.4);
-            padding: 15px;
-        }
-        h2{
-            padding-bottom: 20px;
-            font-weight: 700;
-            color: rgba(0, 0, 0, 0.8);
-            font-size: 20px;
-        }
-        li{
-            padding-left: 10px;
-            line-height: 20px;
-        }
-    }
-`
-
-const Div = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 50vw;
-    height: 550px;
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.4);
-    padding: 15px;
-    margin-left: 15px;
-    h1{
-        font-size: 35px;
-        text-align: center;
-        font-weight: 700;
-        padding-bottom: 10px;
-    }
-`
-
-const Piece = styled.div`
-    display: flex;
-    justify-content: center;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    align-items: center;
-    background-color: #FFF;
-    background: radial-gradient(farthest-corner at center, #ffffff, #b87333);
-    border: 6px solid #b87333;
-    position: relative;
-    img{
-        width: 180px;
-        height: 180px;
-        opacity: 0.8;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    p{
-        position: absolute;
-        z-index: 2;
-        font-size: 25px;
-        color: #FFF;
-        bottom: 25px;
-        right: 40px;
-    }
-    
-`
