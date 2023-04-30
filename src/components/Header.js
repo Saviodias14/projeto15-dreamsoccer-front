@@ -62,6 +62,7 @@ export default function Header({ ocult, setOcult, isDescriptionPage}) {
 
 
 const TopBar = styled.div`
+    width: 100vw;
     background: #08246C;
     border-bottom: 2px solid #040B30;
     box-sizing:border-box;
@@ -72,6 +73,8 @@ const TopBar = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 0 25px;
+    position: fixed;
+    top: 0;
     h1{
         font-family: 'Roboto';
         font-style: normal;
@@ -89,16 +92,16 @@ const TopBar = styled.div`
 
 const Usuario = styled.div`
     background-color: #08246C;
-    width:150px;
-    height: 50px;
-    position: absolute;
+    padding: 5px;
+    width: 180px;
+    position: fixed;
     z-index:1;
     right:0;
     top:70px;
+    border-radius: 0 0 0 15px;
     border-bottom: 4px solid #040B30;
-    box-sizing:border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    display: ${props => props.cliqueUser ? "flex" : "none"} ;
+    display: ${props => props.cliqueUser ? "flex" : "none"};
     justify-content: center;
     align-items: center;
     animation: ${props => props.cliqueUser ? slideIn : slideOut} 0.5s ease-in-out forwards; 

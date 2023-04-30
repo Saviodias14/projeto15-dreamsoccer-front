@@ -61,8 +61,8 @@ export default function SideBarHome({ ocult, setParam }) {
                 <Buttom onClick={() => {
                     setParam("")
                     setSelectedFilter([...newFilter])
-                }} style={{ width: '70px' }}>Limpar</Buttom>
-                <Buttom onClick={FilterSearch} style={{ width: '70px' }}>Buscar</Buttom>
+                }} style={{ width: '70px', fontSize: "18px" }}>Limpar</Buttom>
+                <Buttom onClick={FilterSearch} style={{ width: '70px', fontSize: "18px" }}>Buscar</Buttom>
             </div>
         </SideBar>
     )

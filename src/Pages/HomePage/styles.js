@@ -8,6 +8,7 @@ export const Container = styled.div`
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    margin-top: 70px;
 `
 
 export const Products = styled.div`
@@ -46,21 +47,18 @@ export const SideBar = styled.div`
     background: #08246C;
     border-right: 2px solid #040B30;
     box-sizing:border-box;
-    position: absolute;
+    position: fixed;
     left:0;
     top:70px;
     color:white;
     h1{
-        font-family: 'Roboto';
-        font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 16px;
         display: flex;
+        text-align: center;
+        margin: 0 auto;
         margin-top:20px;
         margin-bottom:40px;
-        margin-left: 20px;
-        text-align: center;
     }
     li{
         display: flex;

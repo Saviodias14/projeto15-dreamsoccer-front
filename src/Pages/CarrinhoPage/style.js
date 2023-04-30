@@ -5,6 +5,7 @@ export const ContainerCarrinho = styled.div`
     width: 100vw;
     height: calc(100vh - 70px);
     display: flex;
+    margin-top: 70px;
     justify-content: space-between;
     padding: 80px 12vw;
     font-size: 17px;
