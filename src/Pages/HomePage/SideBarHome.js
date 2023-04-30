@@ -81,7 +81,7 @@ const SideBar = styled.div`
     box-sizing:border-box;
     position: absolute;
     left:0;
-    top:0;
+    top:70px;
     color:white;
     h1{
         font-family: 'Roboto';

@@ -13,7 +13,6 @@ export const Main = styled.main`
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     div:first-child{
         img{
             width: 250px;
