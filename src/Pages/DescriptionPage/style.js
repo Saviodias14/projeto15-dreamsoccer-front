@@ -7,6 +7,7 @@ export const Main = styled.main`
     height: calc(100vh - 70px);
     display: flex;
     justify-content: space-between;
+    margin-top: 70px;
     padding: 80px 12vw;
     font-size: 17px;
     background: url(${background});
