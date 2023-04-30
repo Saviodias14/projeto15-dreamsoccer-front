@@ -25,7 +25,7 @@ export default function CarrinhoPage() {
         let quantidade = 0
         let preco = 0;
         dadosCarrinho.forEach(item => {
-            quantidade = quantidade + item.amount
+            quantidade = quantidade + Number(item.amount)
             preco = preco + item.amount * item.price
         })
         setTotalCarrinho(quantidade)
@@ -37,7 +37,13 @@ export default function CarrinhoPage() {
     }
 
     function view(){
-        setHidden(false)
+
+        const promise = api.getCarrinho(token)
+        promise.then(res => { setDadosCarrinho(res.data) })
+        promise.catch(err => console.log(err))
+
+        if(hidden === true) setHidden(false)
+        else setHidden(true)
     }
 
     console.log(dadosCarrinho)
@@ -50,7 +56,7 @@ export default function CarrinhoPage() {
                     {dadosCarrinho.map((item) => <Item key={item._id}
                         id={item._id}
                         name={item.name}
-                        amount={item.amount}
+                        amount={Number(item.amount)}
                         color={item.color}
                         price={item.price}
                         img={item.img}
@@ -84,6 +90,9 @@ export default function CarrinhoPage() {
                     <Button2 onClick={send}>
                         Confirmar Pedido
                     </Button2>
+                    <Button3 onClick={view}>
+                       Voltar
+                    </Button3>
                 </Div4>
             </ContainerCarrinho>
         </>
@@ -257,4 +266,33 @@ const Button2 = styled.button`
       transform: translate(-50%, -50%);
     
 `
+const Button3 = styled.button`
+    width: 150px;
+    height: 40px;
+    
+    background: #cdcdcd;
+    border: 1px solid #000000;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 53px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 12px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 14px;
+    color: #000000;
+
+    position: absolute;
+    top: 70%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    
+`
+
 

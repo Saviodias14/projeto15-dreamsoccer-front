@@ -50,6 +50,7 @@ function deleteCarrinho(token, body){
     const promise = axios.delete(`${BASE_URL}/cart`, body, config);
     return promise;
 }
+
 function addItem(id, token, body){
     const config = createConfig(token);
     const promise = axios.post(`${BASE_URL}/cart/${id}`, body, config);

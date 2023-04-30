@@ -15,13 +15,9 @@ export default function DescriptionPage(){
     const [color, setColor] = useState("#b87333");
     const [amount, setAmount] = useState(1);
     const {id} = useParams();
-<<<<<<< HEAD
-    const navigate = useNavigate()
-=======
     const { token } = useContext(UserData);
     const [showMessage, setShowMessage] = useState(false);
     const [disableButton, setDisableButton] = useState(false)
->>>>>>> origin/main
 
     useEffect(() => {
         const promise = api.getPlayerById(id);
@@ -32,11 +28,6 @@ export default function DescriptionPage(){
         promise.catch( (error) => console.log(error.response.data) );
     }, [])
 
-<<<<<<< HEAD
-    function addCarrinho(){
-        
-        navigate("/carrinho")
-=======
     function addPlayer(){
         setDisableButton(true);
         if(token){
@@ -52,7 +43,6 @@ export default function DescriptionPage(){
         } else {
             alert("Por favor, faça login para adicionar o item ao carrinho!");
         }
->>>>>>> origin/main
     }
 
     return(
@@ -96,15 +86,11 @@ export default function DescriptionPage(){
                         </select>
                         <ColorPicker color={color} setColor={setColor}/>
                     </div>
-<<<<<<< HEAD
-                    <button onClick={addCarrinho}>Adicionar ao carrinho</button>
-=======
                     <button onClick={addPlayer}>
                         {disableButton ? <ThreeDots color="#08246C" height={80} width={80} timeout={3000} />
                                 : "Adicionar ao carrinho"}
                     </button>
                     <AddItem showMessage={showMessage} setShowMessage={setShowMessage} setDisableButton={setDisableButton} />
->>>>>>> origin/main
                 </Div>
             </Main>
         </>
