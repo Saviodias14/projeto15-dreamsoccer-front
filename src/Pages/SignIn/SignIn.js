@@ -46,7 +46,7 @@ export default function SignIn() {
     return (
         <>
             <Alert senhaIncorreta={senhaIncorreta}>
-                Ocorreu um erro ao cadastrar. Senha e Confirme sua Senha Divergem
+                Email ou Senha Incorretos
                 <Buttom onClick={() => setSenhaIncorreta(false)}> Ok </Buttom>
             </Alert>
 
