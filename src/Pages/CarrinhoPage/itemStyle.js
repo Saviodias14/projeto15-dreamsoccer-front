@@ -18,17 +18,18 @@ export const Imagem = styled.div`
     border-radius:50px;
     margin: 5px auto;
     border: 6px solid ${props => props.color};
+    margin-top: 10px;
     img{
         width: 100%;
         height: 100%;
         border-radius: 50%;
         object-fit: cover;
     }
-
 `
 
 export const Texto = styled.div`
     margin-right: 20px;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -66,16 +67,16 @@ export const Interacao = styled.div`
 `
 
 export const Button = styled.div`
-    width :40px;
-    height :40px;
+    width: 40px;
+    height: 40px;
     background-color: #08246C;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom:5px;
     border: 1px solid #000000;  
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 31px;
+    cursor: pointer;
 `
 
 export const Quantidade = styled.div`
@@ -111,7 +112,7 @@ export const fadeInOut = keyframes`
 `;
 
 export const RedCard = styled.div`
-    width: 100px;
+    width: 150px;
     background-color: pink;
     margin-left: 30px;
     display: ${props => props.hidden ? "none" : "flex"};
@@ -129,8 +130,8 @@ export const RedCard = styled.div`
     }
 `
 export const Card = styled.div`
-    width: 20px;
-    height: 25px;
+    width: 25px;
+    height: 20px;
     background-color:#F50707 ;
     border: 1px solid #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

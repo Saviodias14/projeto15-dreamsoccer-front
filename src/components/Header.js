@@ -46,7 +46,7 @@ export default function Header({ ocult, setOcult, isDescriptionPage}) {
                     <FaShoppingCart onClick={() => navigate("/carrinho")}
                         style={{ color: 'white', marginLeft: '20px', cursor: 'pointer' }}
                         size={25}  />
-                    <Number> {totalCarrinho} </Number>
+                    <Number><p>{totalCarrinho}</p></Number>
                 </div>
             </TopBar >
             <Usuario cliqueUser={cliqueUser}>
@@ -82,7 +82,6 @@ const TopBar = styled.div`
         text-shadow: 2px 6px 6px rgba(0, 0, 0, 0.9);
     }
     div{
-        /* width:100px; */
         display: flex;
         justify-content: start;
     }
@@ -96,15 +95,12 @@ const Usuario = styled.div`
     z-index:1;
     right:0;
     top:70px;
-
     border-bottom: 4px solid #040B30;
     box-sizing:border-box;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
     display: ${props => props.cliqueUser ? "flex" : "none"} ;
     justify-content: center;
     align-items: center;
-
     animation: ${props => props.cliqueUser ? slideIn : slideOut} 0.5s ease-in-out forwards; 
     
     a{
@@ -147,30 +143,18 @@ const Text = styled.div`
 `
 
 const Number = styled.div`
-
-width: 15px;
-height: 15px;
-
-background: #F92C2C;
-border-radius: 102px;
-
-position: absolute;
-
-display: flex;
-align-items: center;
-justify-content: center;
-
-right: 20px;
-top: 15px;
-
-font-family: 'Roboto';
-font-style: normal;
-font-weight: 700;
-font-size: 10px;
-line-height: 14px;
-/* identical to box height */
-padding-left: 3px;
-
-
-color: #FBF7F7;
+    width: 16px;
+    height: 16px;
+    background: #F92C2C;
+    border-radius: 100%;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-weight: 700;
+    font-size: 12px;
+    color: #FBF7F7;
+    p{
+        margin: 0 auto;
+        padding: 1px 1px 0 0;
+    }
 `

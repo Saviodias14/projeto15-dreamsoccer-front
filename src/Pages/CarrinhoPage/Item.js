@@ -60,8 +60,7 @@ export default function Item({ id, name, amount, color, price, img, valor, setVa
         <Div>
             <Titulo>
                 <Imagem color={color}>
-                    <img src={img}
-                        alt={name} />
+                    <img src={img} alt={name} />
                 </Imagem>
 
                 <Texto>
@@ -72,12 +71,12 @@ export default function Item({ id, name, amount, color, price, img, valor, setVa
             <Interacao>
                 <RedCard hidden={hidden}>
                     <Card />
-                    <p> {`${name} expulso do carrinho`} </p>
+                    <p> {`${name} expulso(a) do carrinho`} </p>
                     <AudioPlayer audioSrc={apito} hidden={hidden} />
                 </RedCard>
                 <Quantidade hidden={hidden}>
                     <Button onClick={decrease}>
-                        <FaWindowMinimize style={{ cursor: 'pointer' }} />
+                        <FaWindowMinimize style={ {marginBottom: "10px"}} />
                     </Button>
                     <Number> {quant} </Number>
                     <Button onClick={increase}>
