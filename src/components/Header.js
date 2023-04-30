@@ -1,15 +1,15 @@
 import styled , { keyframes }from "styled-components"
-import { FaBars, FaCartPlus, FaUser, FaSignOutAlt, FaHome } from 'react-icons/fa';
+import { FaBars, FaShoppingCart, FaUser, FaSignOutAlt, FaHome } from 'react-icons/fa';
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import UserData from "../context/UserData";
 import api from "../services/api";
 
-export default function Header({ ocult, setOcult, isDescriptionPage }) {
+export default function Header({ ocult, setOcult, isDescriptionPage}) {
     const navigate = useNavigate()
     const [cliqueUser, setCliqueUser] = useState(false)
-    const { token, setName, setToken, name } = useContext(UserData)
+    const { token, setName, setToken, name, totalCarrinho } = useContext(UserData)
 
     function logout(){
         const promise = api.logout(token);
@@ -18,6 +18,7 @@ export default function Header({ ocult, setOcult, isDescriptionPage }) {
             setName("");
             localStorage.clear();
             navigate("/");
+            window.location.reload()
         });
         promise.catch((err) => console.log(err.response.data));
     }
@@ -42,9 +43,10 @@ export default function Header({ ocult, setOcult, isDescriptionPage }) {
                     <FaUser onClick={() => { cliqueUser === true ? setCliqueUser(false) : setCliqueUser(true)}}
                         style={{ color: 'white', marginLeft: '20px', cursor: 'pointer' }}
                         size={25} />
-                    <FaCartPlus onClick={() => navigate("/carrinho")}
+                    <FaShoppingCart onClick={() => navigate("/carrinho")}
                         style={{ color: 'white', marginLeft: '20px', cursor: 'pointer' }}
-                        size={25} strokeWidth={30} stroke="white" fill="none" />
+                        size={25}  />
+                    <Number> {totalCarrinho} </Number>
                 </div>
             </TopBar >
             <Usuario cliqueUser={cliqueUser}>
@@ -56,6 +58,8 @@ export default function Header({ ocult, setOcult, isDescriptionPage }) {
         </>
     )
 }
+
+
 
 const TopBar = styled.div`
     background: #08246C;
@@ -78,7 +82,7 @@ const TopBar = styled.div`
         text-shadow: 2px 6px 6px rgba(0, 0, 0, 0.9);
     }
     div{
-        width:100px;
+        /* width:100px; */
         display: flex;
         justify-content: start;
     }
@@ -140,4 +144,33 @@ const Text = styled.div`
     line-height: 47px;
     color: #F8F0F0;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+`
+
+const Number = styled.div`
+
+width: 15px;
+height: 15px;
+
+background: #F92C2C;
+border-radius: 102px;
+
+position: absolute;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+right: 20px;
+top: 15px;
+
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 700;
+font-size: 10px;
+line-height: 14px;
+/* identical to box height */
+padding-left: 3px;
+
+
+color: #FBF7F7;
 `

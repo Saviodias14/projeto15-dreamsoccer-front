@@ -32,12 +32,34 @@ function getPlayers(param){
     return promise;
 }
 
+function getCarrinho(token){
+    const config = createConfig(token);
+    const promise = axios.get(`${BASE_URL}/cart`, config);
+    return promise;
+}
+
+function putCarrinho(token,body,id){
+    const config = createConfig(token);
+    const promise = axios.put(`${BASE_URL}/cart`, body, config);
+    return promise;
+}
+
+function deleteCarrinho(token, body){
+    const config = createConfig(token);
+    console.log(config)
+    const promise = axios.delete(`${BASE_URL}/cart`, body, config);
+    return promise;
+}
+
 const api = {
     login,
     signUp,
     logout,
     getPlayers,
     getPlayerById,
+    getCarrinho,
+    putCarrinho,
+    deleteCarrinho
 }
 
 export default api;

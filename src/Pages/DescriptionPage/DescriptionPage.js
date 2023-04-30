@@ -11,6 +11,7 @@ export default function DescriptionPage(){
     const [color, setColor] = useState("#b87333");
     const [quant, setQuant] = useState(1);
     const {id} = useParams();
+    const navigate = useNavigate()
 
     useEffect(() => {
         const promise = api.getPlayerById(id);
@@ -20,6 +21,11 @@ export default function DescriptionPage(){
         });
         promise.catch( (error) => console.log(error.response.data) );
     }, [])
+
+    function addCarrinho(){
+        
+        navigate("/carrinho")
+    }
 
     return(
         <>
@@ -62,7 +68,7 @@ export default function DescriptionPage(){
                         </select>
                         <ColorPicker color={color} setColor={setColor}/>
                     </div>
-                    <button>Adicionar ao carrinho</button>
+                    <button onClick={addCarrinho}>Adicionar ao carrinho</button>
                 </Div>
             </Main>
         </>
