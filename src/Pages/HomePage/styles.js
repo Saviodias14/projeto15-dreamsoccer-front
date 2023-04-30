@@ -30,7 +30,7 @@ li{
     justify-content: space-evenly;
     margin: 50px 70px 20px 50px ;
 }
- a{
+a{
     text-decoration:none;
 } 
 `
