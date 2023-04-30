@@ -1,12 +1,14 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styled from "styled-components"
+
 
 export default function Player({ _id,imagem, name, price,type }) {
 
     const [color, setColor] = useState("")
 
     useEffect(()=>{
+
         if(type === "Legendary"){
             setColor("#DAA520")
         } else if (type === "Silver"){
@@ -14,7 +16,7 @@ export default function Player({ _id,imagem, name, price,type }) {
         } else {
             setColor("#A0522D")
         }
-    }, [type])
+    }, [type, _id])
 
     return (
         <Link to={`/descricao/${_id}`}>
