@@ -80,7 +80,6 @@ export default function SignIn() {
                                 onChange={handleForm}
                                 required 
                             />
-
                         </Entradas>
 
                         <Buttom type="submit">

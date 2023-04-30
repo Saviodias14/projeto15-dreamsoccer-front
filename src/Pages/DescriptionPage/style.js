@@ -73,8 +73,12 @@ export const Div = styled.div`
     button{
         width: 200px;
         height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border-radius: 10px;
-        margin: 60px auto;
+        margin: 0 auto;
+        margin-top: 50px;
         font-size: 18px;
         background-color: #08246C;
         box-shadow: 4px 4px 4px #888;

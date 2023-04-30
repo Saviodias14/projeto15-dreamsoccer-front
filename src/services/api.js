@@ -32,12 +32,19 @@ function getPlayers(param){
     return promise;
 }
 
+function addItem(id, token, body){
+    const config = createConfig(token);
+    const promise = axios.post(`${BASE_URL}/cart/${id}`, body, config);
+    return promise;
+}
+
 const api = {
     login,
     signUp,
     logout,
     getPlayers,
     getPlayerById,
+    addItem,
 }
 
 export default api;
