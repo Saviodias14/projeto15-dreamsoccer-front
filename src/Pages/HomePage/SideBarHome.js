@@ -2,9 +2,9 @@ import { FaRegArrowAltCircleRight, FaCheckSquare, FaRegArrowAltCircleDown } from
 import { FilterList, FiltersQuery } from "../../constants/FilterList";
 import { Buttom } from "../SignUp/styled";
 import { useContext, useState } from "react";
-import styled from "styled-components";
 import UserData from "../../context/UserData";
 import { Link } from "react-router-dom";
+import { Filter, SideBar, Text } from "./styles";
 
 export default function SideBarHome({ ocult, setParam }) {
     const [filter, setFilter] = useState([...FilterList])
@@ -67,96 +67,3 @@ export default function SideBarHome({ ocult, setParam }) {
         </SideBar>
     )
 }
-
-const SideBar = styled.div`
-    display: ${(props) => (props.ocult ? "none" : "flex")};
-    width:170px;
-    min-height: 100%;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content: flex-start;
-    padding-left:20px;
-    background: #08246C;
-    border-right: 2px solid #040B30;
-    box-sizing:border-box;
-    position: absolute;
-    left:0;
-    top:70px;
-    color:white;
-    h1{
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 16px;
-        display: flex;
-        margin-top:20px;
-        margin-bottom:40px;
-        margin-left: 20px;
-        text-align: center;
-    }
-    li{
-        display: flex;
-        flex-direction:column;
-        margin-bottom: 20px;
-    }
-
-    a{
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 26px;
-        display: flex;
-        margin-top:20px;
-        margin-bottom:40px;
-    }
-    li{
-        display: flex;
-        flex-direction:column;
-        margin-bottom: 20px;
-    }
-    div{
-        display: flex;
-    }
-`
-
-
-const Text = styled.div`
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 47px;
-    color: #F8F0F0;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
-`
-
-const Filter = styled.li`
-    display: flex;
-    flex-direction:column;
-    margin-bottom: 20px;
-    ul{
-        display:${(props) => props.show ? 'none' : 'flex'};
-        flex-direction:column;
-    }
-    div{
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 10px;
-    }
-    h2{
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 22px;
-    }
-    p{
-        font-family: 'Roboto';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 14px;
-        line-height: 18px;
-    }
-`

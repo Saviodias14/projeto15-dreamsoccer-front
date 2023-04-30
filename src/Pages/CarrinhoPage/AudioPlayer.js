@@ -1,6 +1,4 @@
-
 import { useEffect, useRef } from "react";
-
 
 export default function AudioPlayer({ audioSrc, hidden }) {
     const audioRef = useRef(null);
@@ -14,8 +12,6 @@ export default function AudioPlayer({ audioSrc, hidden }) {
             },3000)
         }
     },[hidden])
-
-    
   
     return (
       <div>

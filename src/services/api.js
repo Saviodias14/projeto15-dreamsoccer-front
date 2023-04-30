@@ -44,12 +44,11 @@ function putCarrinho(token,body,id){
     return promise;
 }
 
-function deleteCarrinho(token, body){
+function deleteCarrinho(token, body) {
     const config = createConfig(token);
-    console.log(config)
-    const promise = axios.delete(`${BASE_URL}/cart`, body, config);
+    const promise = axios.delete(`${BASE_URL}/cart`, { ...config, data: body });
     return promise;
-}
+} 
 
 function addItem(id, token, body){
     const config = createConfig(token);
