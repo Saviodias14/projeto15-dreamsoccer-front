@@ -1,6 +1,6 @@
 import Header from "../../components/Header";
 import { useEffect, useState } from "react";
-import {useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import api from "../../services/api";
 import colors from "../../constants/colors";
 import ColorPicker from "./ColorPicker";
@@ -41,6 +41,7 @@ export default function DescriptionPage(){
                 console.log(error.response.data);
             });
         } else {
+            setDisableButton(false);
             alert("Por favor, faça login para adicionar o item ao carrinho!");
         }
     }
