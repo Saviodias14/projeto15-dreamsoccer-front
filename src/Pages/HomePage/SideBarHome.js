@@ -8,24 +8,29 @@ import { Filter, SideBar, Text } from "./styles";
 
 export default function SideBarHome({ ocult, setParam }) {
     const [filter, setFilter] = useState([...FilterList])
+
     let newFilter = []
     FilterList.forEach((l) => newFilter.push([...l.values]))
+    
     const [selectedFilter, setSelectedFilter] = useState([...newFilter])
     const { name } = useContext(UserData)
 
     function FilterSearch() {
+        console.log(selectedFilter)
         let word = "?"
-        selectedFilter[0].filter((v, i) => v ? "" : word += `nacionality=${FiltersQuery[0][i]}&`)
+        selectedFilter[0].filter((v, i) => v ? "" : word += `nationality=${FiltersQuery[0][i]}&`)
         selectedFilter[1].filter((v, i) => v ? "" : word += `position=${FiltersQuery[1][i]}&`)
         selectedFilter[2].filter((v, i) => v ? "" : word += `type=${FiltersQuery[2][i]}&`)
         selectedFilter[3].filter((v, i) => v ? "" : word += `category=${FiltersQuery[3][i]}&`)
         setParam(word.slice(0, -1))
+
+        console.log(word.slice(0, -1))
     }
 
     return (
         <SideBar ocult={ocult}>
             <h1>{name ? <Text> Olá, {name} </Text> : <Link to={"/login"}> <Text> Comprar? <br /> Faça Login! </Text></Link>} </h1>
-            <ul>{FilterList.map((l, i) =>
+            <ul>{FilterList.map((l, i) => 
                 <Filter show={filter[i]}>
                     <div>{filter[i] ?
                         <FaRegArrowAltCircleRight onClick={() => {
@@ -54,7 +59,7 @@ export default function SideBarHome({ ocult, setParam }) {
                             </div>
                         )}
                     </ul>
-                </Filter>
+                </Filter> 
             )}
             </ul>
             <div>

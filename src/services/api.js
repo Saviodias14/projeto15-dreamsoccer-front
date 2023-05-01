@@ -28,6 +28,7 @@ function logout(token){
 }
 
 function getPlayers(param){
+    console.log(`${BASE_URL}/players${param}`)
     const promise = axios.get(`${BASE_URL}/players${param}`);
     return promise;
 }

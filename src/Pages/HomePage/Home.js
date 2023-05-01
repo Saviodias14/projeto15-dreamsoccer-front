@@ -32,6 +32,7 @@ useEffect(()=>{
 },[setTotalCarrinho,dadosCarrinho])
 
 
+
 if (!playersList) {
     return (
         <>
