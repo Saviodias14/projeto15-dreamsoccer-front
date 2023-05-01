@@ -32,7 +32,7 @@ export default function CarrinhoPage() {
     }, [setTotalCarrinho, dadosCarrinho])
 
     function send() {
-        navigate("/")
+        navigate("/finalizar")
     }
 
     function reload() {

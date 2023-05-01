@@ -39,7 +39,7 @@ export const Texto = styled.div`
         font-style: normal;
         font-weight: 700;
         font-size: 20px;
-        line-height: 14px;
+        line-height: 20px;
         display: flex;
         align-items: center;
         text-align: center;

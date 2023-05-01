@@ -102,7 +102,6 @@ export const Buttom = styled.button`
     border: 2px solid #000000;
     box-shadow: 0px 4px 4px rgba(76, 238, 238, 0.25);
     border-radius: 70px;
-
     font-family: 'Righteous';
     font-style: normal;
     font-weight: 400;

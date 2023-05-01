@@ -83,9 +83,11 @@ export const Div4 = styled.div`
         align-items: center;
     }
     span{
-        margin-left: 100px;
+        margin-left: 70px;
+        white-space: nowrap;
     }
     h1{
+        margin-top: 50px;
         text-align: right;
     }
 `
@@ -94,7 +96,7 @@ export const Titulo = styled.div`
     font-style: normal;
     font-weight: 700;
     font-size: 20px;
-    line-height: 14px;
+    line-height: 20px;
     color: #000000;
     display: flex;
     justify-content: center;

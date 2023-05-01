@@ -6,6 +6,7 @@ import DescriptionPage from "./Pages/DescriptionPage/DescriptionPage";
 import UserData from "./context/UserData";
 import { useState } from "react";
 import CarrinhoPage from "./Pages/CarrinhoPage/CarrinhoPage";
+import Finalize from "./Pages/FinalizePage/Finalize";
 
 function App() {
 
@@ -17,11 +18,13 @@ function App() {
 
   return (
 
-    <UserData.Provider value={{ token, setToken, 
-                                name, setName, 
-                                totalCarrinho, setTotalCarrinho, 
-                                dadosCarrinho, setDadosCarrinho,
-                                idPlayer, setIdPlayer }} >
+    <UserData.Provider value={{
+      token, setToken,
+      name, setName,
+      totalCarrinho, setTotalCarrinho,
+      dadosCarrinho, setDadosCarrinho,
+      idPlayer, setIdPlayer
+    }} >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -29,6 +32,7 @@ function App() {
           <Route path="/Login" element={< SignIn />} />
           <Route path="/descricao/:id" element={<DescriptionPage />} />
           <Route path="/carrinho" element={<CarrinhoPage />} />
+          <Route path="/finalizar" element={<Finalize />} />
         </Routes>
 
       </BrowserRouter>
