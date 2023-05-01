@@ -15,10 +15,11 @@ export default function SideBarHome({ ocult, setParam }) {
 
     function FilterSearch() {
         let word = "?"
-        selectedFilter[0].filter((v, i) => v ? "" : word += `nacionality=${FiltersQuery[0][i]}&`)
+        selectedFilter[0].filter((v, i) => v ? "" : word += `nationality=${FiltersQuery[0][i]}&`)
         selectedFilter[1].filter((v, i) => v ? "" : word += `position=${FiltersQuery[1][i]}&`)
         selectedFilter[2].filter((v, i) => v ? "" : word += `type=${FiltersQuery[2][i]}&`)
         selectedFilter[3].filter((v, i) => v ? "" : word += `category=${FiltersQuery[3][i]}&`)
+        console.log(word.slice(0, -1))
         setParam(word.slice(0, -1))
     }
 
