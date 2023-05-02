@@ -9,13 +9,16 @@ import api from "../services/api";
 export default function Header({ ocult, setOcult, isDescriptionPage}) {
     const navigate = useNavigate()
     const [cliqueUser, setCliqueUser] = useState(false)
-    const { token, setName, setToken, name, totalCarrinho } = useContext(UserData)
+    const { token, setName, setToken, setEmail,name, totalCarrinho } = useContext(UserData)
 
     function logout(){
         const promise = api.logout(token);
         promise.then( () =>{
             setToken("");
             setName("");
+            setEmail("");
+
+
             localStorage.clear();
             navigate("/");
             window.location.reload()
