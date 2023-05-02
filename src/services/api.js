@@ -56,6 +56,18 @@ function addItem(id, token, body){
     const promise = axios.post(`${BASE_URL}/cart/${id}`, body, config);
     return promise;
 }
+function postShop(token, body){
+    const config = createConfig(token);
+    const promise = axios.post(`${BASE_URL}/checkout`,body, config);
+    return promise;
+}
+function deleteAll(token) {
+    const config = createConfig(token);
+    console.log(config)
+    const promise = axios.delete(`${BASE_URL}/finalizar`, { ...config });
+    return promise;
+} 
+
 
 const api = {
     login,
@@ -67,6 +79,8 @@ const api = {
     putCarrinho,
     deleteCarrinho,
     addItem,
+    postShop,
+    deleteAll
 }
 
 export default api;

@@ -32,7 +32,8 @@ export default function CarrinhoPage() {
     }, [setTotalCarrinho, dadosCarrinho])
 
     function send() {
-        navigate("/finalizar")
+        if(dadosCarrinho.length) return navigate("/finalizar")
+        alert("O seu carrinho está vazio! Adicione itens para comprar.")
     }
 
     function reload() {
