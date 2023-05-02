@@ -39,7 +39,8 @@ export const Products = styled.div`
 export const SideBar = styled.div`
     display: ${(props) => (props.ocult ? "none" : "flex")};
     width:170px;
-    min-height: 100%;
+    min-height: 90vh;
+    max-height:80vh;
     flex-direction:column;
     align-items:flex-start;
     justify-content: flex-start;
@@ -51,6 +52,15 @@ export const SideBar = styled.div`
     left:0;
     top:70px;
     color:white;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+    width: 5px; /* Largura da barra de rolagem */
+    height: 50%; /* Altura da barra de rolagem */
+    }
+    &::-webkit-scrollbar-thumb {
+    background: #888;
+    }
+
     h1{
         font-weight: 700;
         font-size: 20px;

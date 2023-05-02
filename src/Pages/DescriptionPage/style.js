@@ -14,6 +14,8 @@ export const Main = styled.main`
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
+    position:fixed;
+    overflow-y: scroll;
     div:first-child{
         img{
             width: 250px;

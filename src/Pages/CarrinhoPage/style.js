@@ -14,6 +14,8 @@ export const ContainerCarrinho = styled.div`
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    position:fixed;
+    overflow-y:scroll;
 `
 
 export const Div = styled.div`
