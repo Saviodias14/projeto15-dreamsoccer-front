@@ -7,6 +7,7 @@ import api from "../../services/api"
 import UserData from "../../context/UserData"
 import { useNavigate } from "react-router-dom"
 
+
 export default function Finalize() {
     const { token } = useContext(UserData)
     const navigate = useNavigate()
@@ -19,6 +20,8 @@ export default function Finalize() {
     const [disabled, setDisabled] = useState(false)
     const cepRegex = /^\d{5}-\d{3}$/
     const body = { CEP: CEP.replace("-", ""), road, number: Number(number), city, state, country }
+
+    const {email} = useContext(UserData)
 
     function searchCEP(e) {
         const cepValue = e.target.value
@@ -53,6 +56,10 @@ export default function Finalize() {
                 .catch((err)=>alert(err.response.data))
         )
         promisse.catch((err) => alert(err.response.data))
+
+        api.sendEmail(token, {email : email})
+            .then(res => console.log(res))
+            .catch(err=> console.log(err))
     }
     return (
         <>

@@ -12,6 +12,7 @@ function App() {
 
   const [token, setToken] = useState(localStorage.getItem("token"))
   const [name, setName] = useState(localStorage.getItem("userName"))
+  const [email, setEmail] = useState(localStorage.getItem("userEmail"))
   const [totalCarrinho, setTotalCarrinho] = useState(0)
   const [dadosCarrinho, setDadosCarrinho] = useState([])
   const [idPlayer, setIdPlayer] = useState("")
@@ -23,7 +24,8 @@ function App() {
       name, setName,
       totalCarrinho, setTotalCarrinho,
       dadosCarrinho, setDadosCarrinho,
-      idPlayer, setIdPlayer
+      idPlayer, setIdPlayer,
+      email, setEmail
     }} >
       <BrowserRouter>
         <Routes>

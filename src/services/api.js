@@ -68,6 +68,11 @@ function deleteAll(token) {
     return promise;
 } 
 
+function sendEmail(token, body){
+    const config = createConfig(token);
+    const promise = axios.post(`${BASE_URL}/email`,body, config);
+    return promise;
+}
 
 const api = {
     login,
@@ -80,7 +85,8 @@ const api = {
     deleteCarrinho,
     addItem,
     postShop,
-    deleteAll
+    deleteAll,
+    sendEmail
 }
 
 export default api;

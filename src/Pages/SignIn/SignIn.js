@@ -12,7 +12,7 @@ export default function SignIn() {
     const [senhaIncorreta, setSenhaIncorreta] = useState(false)
     const navigate = useNavigate()
 
-    const {setToken, setName} = useContext(UserData)
+    const {setToken, setName, setEmail} = useContext(UserData)
 
     /* useEffect(() => {
         if (!token || !name) return navigate("/")
@@ -32,8 +32,11 @@ export default function SignIn() {
             console.log(res); 
             setToken(res.data.token);
             setName(res.data.userName);
+            setEmail(res.data.userEmail)
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("userName", res.data.userName);
+            localStorage.setItem("userEmail", res.data.userEmail);
+
             navigate("/"); 
         })
         promise.catch( (err) => {
